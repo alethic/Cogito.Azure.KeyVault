@@ -38,7 +38,7 @@ namespace Cogito.Components.Azure.KeyVault
         /// <returns></returns>
         public CertificateClient CreateSecretClient()
         {
-            return new CertificateClient(options.Value.BaseUri, credential);
+            return new CertificateClient(options.Value.VaultUri, credential);
         }
 
     }
