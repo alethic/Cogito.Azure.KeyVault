@@ -5,8 +5,11 @@
         <RepositoryUrl>https://github.com/alethic/Cogito.Components.Azure.KeyVault</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
-        <PackageProjectUrl>https://github.com/alethic/Cogito.Components.Azure.KeyVault</PackageProjectUrl>
-        <PackageIcon>$(MSBuildThisFileDirectory)icon.png</PackageIcon>
+        <PackageProjectUrl>https://github.com/alethic/Cogito.Components.Azure.KeyVault</PackageProjectUrl
+        <PackageIcon>icon.png</PackageIcon>
         <LangVersion>8.0</LangVersion>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)icon.png" Pack="true" PackagePath="" />
+    </ItemGroup>
 </Project>
