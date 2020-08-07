@@ -4,8 +4,8 @@
         <Company>Alethic Solutions</Company>
         <RepositoryUrl>https://github.com/alethic/Cogito.Components.Azure.KeyVault</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/alethic/Cogito.Components.Azure.KeyVault</PackageProjectUrl>
         <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
-        <PackageProjectUrl>https://github.com/alethic/Cogito.Components.Azure.KeyVault</PackageProjectUrl
         <PackageIcon>icon.png</PackageIcon>
         <LangVersion>8.0</LangVersion>
     </PropertyGroup>
