@@ -8,6 +8,7 @@ namespace Cogito.Components.Azure.KeyVault
     /// <summary>
     /// Configures the default keyvault.
     /// </summary>
+    [RegisterOptions("Azure:KeyVault")]
     [RegisterOptions("Cogito:Components:Azure:KeyVault")]
     public class KeyVaultOptions
     {
