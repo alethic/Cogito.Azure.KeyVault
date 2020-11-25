@@ -2,19 +2,16 @@
 
 using Azure.Security.KeyVault.Keys;
 
-using Cogito.Autofac;
-using Cogito.Components.Azure.Identity;
+using Cogito.Azure.Identity;
 
 using Microsoft.Extensions.Options;
 
-namespace Cogito.Components.Azure.KeyVault
+namespace Cogito.Azure.KeyVault
 {
 
     /// <summary>
     /// Provides instances of an Azure Key Vault key client.
     /// </summary>
-    [RegisterAs(typeof(KeyClientFactory))]
-    [RegisterSingleInstance]
     public class KeyClientFactory
     {
 

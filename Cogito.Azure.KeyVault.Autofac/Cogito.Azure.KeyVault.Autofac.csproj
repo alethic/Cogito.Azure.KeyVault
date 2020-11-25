@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <Description>Additional components for managing Azure Key Vaults.</Description>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Cogito.Azure.Identity.Autofac" Version="0.1.21" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cogito.Azure.KeyVault\Cogito.Azure.KeyVault.csproj" />
+    </ItemGroup>
+
+</Project>

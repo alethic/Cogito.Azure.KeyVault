@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 using Azure.Security.KeyVault.Certificates;
 using Azure.Security.KeyVault.Secrets;
 
-using Cogito.Autofac;
-
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
-using Serilog;
-using Serilog.Events;
-
-namespace Cogito.Components.Azure.KeyVault.Certificates
+namespace Cogito.Azure.KeyVault
 {
 
     /// <summary>
     /// Provides X509 Certificates from Azure KeyVault.
     /// </summary>
-    [RegisterAs(typeof(KeyVaultX509Certificate2Provider))]
     public class KeyVaultX509Certificate2Provider
     {
 
@@ -41,7 +36,7 @@ namespace Cogito.Components.Azure.KeyVault.Certificates
         /// <param name="secretClient"></param>
         /// <param name="logger"></param>
         /// <param name="cache"></param>
-        public KeyVaultX509Certificate2Provider(CertificateClient certificateClient, SecretClient secretClient, ILogger logger, IMemoryCache cache = null)
+        public KeyVaultX509Certificate2Provider(CertificateClient certificateClient, SecretClient secretClient, ILogger<KeyVaultX509Certificate2Provider> logger, IMemoryCache cache = null)
         {
             this.certificateClient = certificateClient ?? throw new ArgumentNullException(nameof(certificateClient));
             this.secretClient = secretClient ?? throw new ArgumentNullException(nameof(secretClient));
@@ -65,12 +60,12 @@ namespace Cogito.Components.Azure.KeyVault.Certificates
 
 
             // download certificate from key vault
-            logger.Information("Loading certificate {CertificateId}.", id);
+            logger.LogInformation("Loading certificate {CertificateId}.", id);
             var crt = await certificateClient.GetCertificateAsync(id, cancellationToken);
             if (crt.Value == null)
                 throw new InvalidOperationException($"Unable to load Key Vault certificate from '{id}'.");
 
-            logger.Information("Loading secret {SecretId}.", crt.Value.SecretId);
+            logger.LogInformation("Loading secret {SecretId}.", crt.Value.SecretId);
             var key = await secretClient.GetSecretAsync(crt.Value.SecretId.ToString(), cancellationToken: cancellationToken);
             if (crt.Value == null)
                 throw new InvalidOperationException($"Unable to load Key Vault secret from '{crt.Value.SecretId}'.");
@@ -82,8 +77,8 @@ namespace Cogito.Components.Azure.KeyVault.Certificates
                 flags);
 
             // log certificate information
-            if (logger.IsEnabled(LogEventLevel.Information))
-                logger.Information("Loaded certificate from {Id}: {@Certificate}.", crt.Value.Id, new
+            if (logger.IsEnabled(LogLevel.Information))
+                logger.LogInformation("Loaded certificate from {Id}: {@Certificate}.", crt.Value.Id, new
                 {
                     pfx.FriendlyName,
                     pfx.Issuer,
