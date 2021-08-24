@@ -65,10 +65,15 @@ namespace Cogito.Azure.KeyVault
             if (crt.Value == null)
                 throw new InvalidOperationException($"Unable to load Key Vault certificate from '{name}'.");
 
-            logger.LogInformation("Loading secret {SecretId}.", crt.Value.Name);
-            var key = await secretClient.GetSecretAsync(crt.Value.Name, cancellationToken: cancellationToken);
+            // parse secret URI to extract name and version
+            var a = crt.Value.SecretId.AbsolutePath.Split('/');
+            var v = a[a.Length - 1];
+            var n = a[a.Length - 2];
+
+            logger.LogInformation("Loading secret {SecretId}.", crt.Value.SecretId);
+            var key = await secretClient.GetSecretAsync(n, v, cancellationToken: cancellationToken);
             if (crt.Value == null)
-                throw new InvalidOperationException($"Unable to load Key Vault secret from '{crt.Value.SecretId}'.");
+                throw new InvalidOperationException($"Unable to load Key Vault secret '{n}'.");
 
             // load private key
             var pfx = new X509Certificate2(
