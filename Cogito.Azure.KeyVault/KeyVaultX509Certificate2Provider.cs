@@ -94,18 +94,18 @@ namespace Cogito.Azure.KeyVault
         /// <summary>
         /// Gets the X509 Certificate with the given ID.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="name"></param>
         /// <param name="flags"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task<X509Certificate2> GetX509Certificate2Async(string id, X509KeyStorageFlags flags = DEFAULT_FLAGS, CancellationToken cancellationToken = default)
+        public virtual Task<X509Certificate2> GetX509Certificate2Async(string name, X509KeyStorageFlags flags = DEFAULT_FLAGS, CancellationToken cancellationToken = default)
         {
-            if (id == null)
-                throw new ArgumentNullException(nameof(id));
-            if (string.IsNullOrWhiteSpace(id))
-                throw new ArgumentException(nameof(id));
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException(nameof(name));
 
-            return cache.GetOrCreateAsync(id, _ => LoadCertifcateAsync(id, flags, cancellationToken));
+            return cache.GetOrCreateAsync(name, _ => LoadCertifcateAsync(name, flags, cancellationToken));
         }
 
     }
