@@ -105,7 +105,7 @@ namespace Cogito.Azure.KeyVault
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException(nameof(name));
 
-            return cache.GetOrCreateAsync(name, _ => LoadCertifcateAsync(name, flags, cancellationToken));
+            return cache.GetOrCreateAsync((typeof(KeyVaultX509Certificate2Provider), name), _ => LoadCertifcateAsync(name, flags, cancellationToken));
         }
 
     }
