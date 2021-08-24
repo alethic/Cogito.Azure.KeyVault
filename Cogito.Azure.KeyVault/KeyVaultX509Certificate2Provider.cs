@@ -47,23 +47,23 @@ namespace Cogito.Azure.KeyVault
         /// <summary>
         /// Downloads the certificate from the key vault store.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="name"></param>
         /// <param name="flags"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        async Task<X509Certificate2> LoadCertifcateAsync(string id, X509KeyStorageFlags flags, CancellationToken cancellationToken)
+        async Task<X509Certificate2> LoadCertifcateAsync(string name, X509KeyStorageFlags flags, CancellationToken cancellationToken)
         {
-            if (id == null)
-                throw new ArgumentNullException(nameof(id));
-            if (string.IsNullOrWhiteSpace(id))
-                throw new ArgumentException(nameof(id));
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException(nameof(name));
 
 
             // download certificate from key vault
-            logger.LogInformation("Loading certificate {CertificateId}.", id);
-            var crt = await certificateClient.GetCertificateAsync(id, cancellationToken);
+            logger.LogInformation("Loading certificate {CertificateId}.", name);
+            var crt = await certificateClient.GetCertificateAsync(name, cancellationToken);
             if (crt.Value == null)
-                throw new InvalidOperationException($"Unable to load Key Vault certificate from '{id}'.");
+                throw new InvalidOperationException($"Unable to load Key Vault certificate from '{name}'.");
 
             logger.LogInformation("Loading secret {SecretId}.", crt.Value.Name);
             var key = await secretClient.GetSecretAsync(crt.Value.Name, cancellationToken: cancellationToken);
