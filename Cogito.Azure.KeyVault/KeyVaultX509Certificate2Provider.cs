@@ -18,7 +18,7 @@ namespace Cogito.Azure.KeyVault
     public class KeyVaultX509Certificate2Provider
     {
 
-#if NETSTANDARD2_0 || NET462
+#if NET472
         const X509KeyStorageFlags DEFAULT_FLAGS = X509KeyStorageFlags.DefaultKeySet;
 #else
         const X509KeyStorageFlags DEFAULT_FLAGS = X509KeyStorageFlags.EphemeralKeySet;
