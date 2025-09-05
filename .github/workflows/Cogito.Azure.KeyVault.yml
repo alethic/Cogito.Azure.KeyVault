@@ -37,8 +37,6 @@ jobs:
         versionSpec: 6.x
     - name: Execute GitVersion
       uses: gittools/actions/gitversion/execute@v4
-      with:
-        useConfigFile: true
     - name: Add NuGet Source (GitHub)
       shell: pwsh
       run: dotnet nuget add source --username USERNAME --password $env:GITHUB_TOKEN --store-password-in-clear-text --name alethic $env:GITHUB_REPOS
