@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFrameworks>net472;net6.0;net8.0</TargetFrameworks>
         <Description>Additional components for managing Azure Key Vaults.</Description>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
