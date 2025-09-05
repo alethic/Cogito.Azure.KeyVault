@@ -15,14 +15,14 @@ namespace Cogito.Azure.KeyVault
     {
 
         readonly IOptions<KeyVaultOptions> options;
-        readonly TokenCredential? credential;
+        readonly TokenCredential credential;
 
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
         /// <param name="options"></param>
         /// <param name="credential"></param>
-        public KeyClientFactory(IOptions<KeyVaultOptions> options, TokenCredential? credential)
+        public KeyClientFactory(IOptions<KeyVaultOptions> options, TokenCredential credential)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.credential = credential ?? throw new ArgumentNullException(nameof(credential));
@@ -34,6 +34,9 @@ namespace Cogito.Azure.KeyVault
         /// <returns></returns>
         public KeyClient CreateKeyClient()
         {
+            if (options.Value.VaultUri is null)
+                throw new InvalidOperationException("VaultUri has not been configured.");
+
             return new KeyClient(options.Value.VaultUri, credential);
         }
 

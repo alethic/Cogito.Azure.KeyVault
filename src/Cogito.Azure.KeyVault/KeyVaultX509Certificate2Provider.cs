@@ -74,10 +74,7 @@ namespace Cogito.Azure.KeyVault
                 throw new InvalidOperationException($"Unable to load Key Vault secret from '{sid}'.");
 
             // load private key
-            var pfx = new X509Certificate2(
-                Convert.FromBase64String(key.Value.Value),
-                (string)null,
-                flags);
+            var pfx = new X509Certificate2(Convert.FromBase64String(key.Value.Value), (string?)null, flags);
 
             // log certificate information
             if (logger.IsEnabled(LogLevel.Information))
@@ -101,14 +98,17 @@ namespace Cogito.Azure.KeyVault
         /// <param name="flags"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Task<X509Certificate2> GetX509Certificate2Async(string name, X509KeyStorageFlags flags = DEFAULT_FLAGS, CancellationToken cancellationToken = default)
+        public virtual async Task<X509Certificate2> GetX509Certificate2Async(string name, X509KeyStorageFlags flags = DEFAULT_FLAGS, CancellationToken cancellationToken = default)
         {
             if (name == null)
                 throw new ArgumentNullException(nameof(name));
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException(nameof(name));
 
-            return cache.GetOrCreateAsync((typeof(KeyVaultX509Certificate2Provider), name), _ => LoadCertifcateAsync(name, flags, cancellationToken));
+            return await cache.GetOrCreateAsync(
+                (typeof(KeyVaultX509Certificate2Provider), name),
+                _ => LoadCertifcateAsync(name, flags, cancellationToken)) ??
+                throw new InvalidOperationException();
         }
 
     }

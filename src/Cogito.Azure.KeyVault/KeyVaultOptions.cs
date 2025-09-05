@@ -12,7 +12,7 @@ namespace Cogito.Azure.KeyVault
         /// <summary>
         /// Base URI of the default system keyvault.
         /// </summary>
-        public Uri VaultUri { get; set; }
+        public Uri? VaultUri { get; set; }
 
     }
 
