@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net472;net6.0</TargetFrameworks>
+        <TargetFrameworks>net472;net6.0;net8.0</TargetFrameworks>
         <Description>Additional components for managing Azure Key Vaults.</Description>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Cogito.Azure.Identity.Autofac" Version="1.0.2" />
+        <PackageReference Include="Cogito.Azure.Identity.Autofac" Version="2.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Cogito.Azure.KeyVault\Cogito.Azure.KeyVault.csproj" />
+        <ProjectReference Include="..\Cogito.Azure.KeyVault\Cogito.Azure.KeyVault.csproj" />
     </ItemGroup>
 
 </Project>
