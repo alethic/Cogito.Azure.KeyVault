@@ -36,7 +36,7 @@ namespace Cogito.Azure.KeyVault
         /// <param name="secretClient"></param>
         /// <param name="logger"></param>
         /// <param name="cache"></param>
-        public KeyVaultX509Certificate2Provider(CertificateClient certificateClient, SecretClient secretClient, ILogger<KeyVaultX509Certificate2Provider> logger, IMemoryCache cache = null)
+        public KeyVaultX509Certificate2Provider(CertificateClient certificateClient, SecretClient secretClient, ILogger<KeyVaultX509Certificate2Provider> logger, IMemoryCache? cache = null)
         {
             this.certificateClient = certificateClient ?? throw new ArgumentNullException(nameof(certificateClient));
             this.secretClient = secretClient ?? throw new ArgumentNullException(nameof(secretClient));
