@@ -14,6 +14,11 @@ namespace Cogito.Azure.KeyVault
         /// </summary>
         public Uri? VaultUri { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether to disable verification that the authentication challenge resource matches the Key Vault domain.
+        /// </summary>
+        public bool? DisableChallengeResourceVerification { get; set; }
+
     }
 
 }

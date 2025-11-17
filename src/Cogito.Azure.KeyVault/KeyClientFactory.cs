@@ -37,7 +37,10 @@ namespace Cogito.Azure.KeyVault
             if (options.Value.VaultUri is null)
                 throw new InvalidOperationException("VaultUri has not been configured.");
 
-            return new KeyClient(options.Value.VaultUri, credential);
+            return new KeyClient(options.Value.VaultUri, credential, new KeyClientOptions()
+            {
+                DisableChallengeResourceVerification = options.Value.DisableChallengeResourceVerification ?? false,
+            });
         }
 
     }

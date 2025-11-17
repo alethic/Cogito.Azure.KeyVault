@@ -34,7 +34,10 @@ namespace Cogito.Azure.KeyVault
         /// <returns></returns>
         public CertificateClient CreateSecretClient()
         {
-            return new CertificateClient(options.Value.VaultUri, credential);
+            return new CertificateClient(options.Value.VaultUri, credential, new CertificateClientOptions()
+            {
+                DisableChallengeResourceVerification = options.Value.DisableChallengeResourceVerification ?? false,
+            });
         }
 
     }
