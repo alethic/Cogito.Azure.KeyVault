@@ -19,6 +19,11 @@ namespace Cogito.Azure.KeyVault
         /// </summary>
         public bool? DisableChallengeResourceVerification { get; set; }
 
+        /// <summary>
+        /// Configures the Key Vault support to make use of the Azure Key Vault emulator.
+        /// </summary>
+        public bool? UseEmulator { get; set; }
+
     }
 
 }

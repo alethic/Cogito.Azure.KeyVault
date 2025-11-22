@@ -36,9 +36,13 @@ namespace Cogito.Azure.KeyVault
             if (_options.Value.VaultUri is null)
                 throw new InvalidOperationException("VaultUri has not been configured.");
 
+            var disableChallengeResourceVerification = _options.Value.DisableChallengeResourceVerification ?? false;
+            if (_options.Value.UseEmulator == true)
+                disableChallengeResourceVerification = true;
+
             return new SecretClient(_options.Value.VaultUri, _credentialProvider.GetCredential(), new SecretClientOptions()
             {
-                DisableChallengeResourceVerification = _options.Value.DisableChallengeResourceVerification ?? false,
+                DisableChallengeResourceVerification = disableChallengeResourceVerification,
             });
         }
 
