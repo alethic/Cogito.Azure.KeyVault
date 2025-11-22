@@ -3,6 +3,8 @@
 using Azure.Core;
 using Azure.Security.KeyVault.Certificates;
 
+using AzureKeyVaultEmulator.Aspire.Client;
+
 using Microsoft.Extensions.Options;
 
 namespace Cogito.Azure.KeyVault
@@ -14,8 +16,8 @@ namespace Cogito.Azure.KeyVault
     public class CertificateClientFactory
     {
 
-        readonly IOptions<KeyVaultOptions> options;
-        readonly TokenCredential credential;
+        readonly IOptions<KeyVaultOptions> _options;
+        readonly TokenCredential _credential;
 
         /// <summary>
         /// Initializes a new instance.
@@ -24,8 +26,8 @@ namespace Cogito.Azure.KeyVault
         /// <param name="credential"></param>
         public CertificateClientFactory(IOptions<KeyVaultOptions> options, TokenCredential credential)
         {
-            this.options = options ?? throw new ArgumentNullException(nameof(options));
-            this.credential = credential ?? throw new ArgumentNullException(nameof(credential));
+            _options = options ?? throw new ArgumentNullException(nameof(options));
+            _credential = credential ?? throw new ArgumentNullException(nameof(credential));
         }
 
         /// <summary>
@@ -34,9 +36,20 @@ namespace Cogito.Azure.KeyVault
         /// <returns></returns>
         public CertificateClient CreateSecretClient()
         {
-            return new CertificateClient(options.Value.VaultUri, credential, new CertificateClientOptions()
+            if (_options.Value.VaultUri is null)
+                throw new InvalidOperationException("VaultUri has not been configured.");
+
+            var credential = _credential;
+            var disableChallengeResourceVerification = _options.Value.DisableChallengeResourceVerification ?? false;
+            if (_options.Value.UseEmulator == true)
             {
-                DisableChallengeResourceVerification = options.Value.DisableChallengeResourceVerification ?? false,
+                credential = new EmulatedTokenCredential(_options.Value.VaultUri.ToString());
+                disableChallengeResourceVerification = true;
+            }
+
+            return new CertificateClient(_options.Value.VaultUri, credential, new CertificateClientOptions()
+            {
+                DisableChallengeResourceVerification = disableChallengeResourceVerification,
             });
         }
 
