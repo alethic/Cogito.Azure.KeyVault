@@ -1,4 +1,6 @@
-﻿namespace Cogito.Azure.KeyVault.DataProtection
+﻿using System;
+
+namespace Cogito.Azure.KeyVault.DataProtection
 {
 
     /// <summary>
@@ -8,10 +10,10 @@
     {
 
         /// <summary>
-        /// Gets the identifier.
+        /// Gets the identifier for the key name.
         /// </summary>
         /// <returns></returns>
-        string GetIdentifier(string keyName);
+        Uri GetIdentifier(string keyName);
 
     }
 

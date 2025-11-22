@@ -25,7 +25,7 @@ namespace Cogito.Azure.KeyVault.DataProtection
         }
 
         /// <inheritdoc />
-        public string GetIdentifier(string keyName)
+        public Uri GetIdentifier(string keyName)
         {
 
             KeyVaultKey? GetKeyOrNull()
@@ -46,7 +46,7 @@ namespace Cogito.Azure.KeyVault.DataProtection
                 key = _client.CreateRsaKey(new CreateRsaKeyOptions(keyName));
 
             // return the key ID
-            return key.Id.AbsoluteUri;
+            return key.Id;
         }
 
     }
