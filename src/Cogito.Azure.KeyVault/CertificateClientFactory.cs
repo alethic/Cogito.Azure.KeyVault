@@ -31,7 +31,7 @@ namespace Cogito.Azure.KeyVault
         /// Creates a new key vault certificate client.
         /// </summary>
         /// <returns></returns>
-        public CertificateClient CreateSecretClient()
+        public CertificateClient CreateCertificateClient()
         {
             if (_options.Value.VaultUri is null)
                 throw new InvalidOperationException("VaultUri has not been configured.");

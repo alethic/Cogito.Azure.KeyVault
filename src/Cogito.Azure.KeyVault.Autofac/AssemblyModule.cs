@@ -19,7 +19,7 @@ namespace Cogito.Azure.KeyVault.Autofac
             builder.RegisterType<KeyClientFactory>().AsSelf().SingleInstance();
             builder.RegisterType<SecretClientFactory>().AsSelf().SingleInstance();
             builder.RegisterType<KeyVaultX509Certificate2Provider>().AsSelf();
-            builder.Register(ctx => ctx.Resolve<CertificateClientFactory>().CreateSecretClient()).SingleInstance();
+            builder.Register(ctx => ctx.Resolve<CertificateClientFactory>().CreateCertificateClient()).SingleInstance();
             builder.Register(ctx => ctx.Resolve<KeyClientFactory>().CreateKeyClient()).SingleInstance();
             builder.Register(ctx => ctx.Resolve<SecretClientFactory>().CreateSecretClient()).SingleInstance();
         }
