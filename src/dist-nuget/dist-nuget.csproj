@@ -12,6 +12,9 @@
         <PackageProjectReference Include="..\Cogito.Azure.KeyVault.Autofac\Cogito.Azure.KeyVault.Autofac.csproj">
             <PackageTargetPath>.</PackageTargetPath>
         </PackageProjectReference>
+        <PackageProjectReference Include="..\Cogito.Azure.KeyVault.DataProtection\Cogito.Azure.KeyVault.DataProtection.csproj">
+            <PackageTargetPath>.</PackageTargetPath>
+        </PackageProjectReference>
     </ItemGroup>
 
 </Project>

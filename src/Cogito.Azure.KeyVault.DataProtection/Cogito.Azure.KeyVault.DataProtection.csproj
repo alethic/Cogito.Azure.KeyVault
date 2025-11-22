@@ -9,4 +9,8 @@
       <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.6.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Cogito.Azure.KeyVault\Cogito.Azure.KeyVault.csproj" />
+    </ItemGroup>
+
 </Project>

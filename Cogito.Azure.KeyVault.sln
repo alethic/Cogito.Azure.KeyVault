@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dist", "dist", "{8598EAA2-A9F0-16E8-9100-3EB9A5B8D556}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cogito.Azure.KeyVault.DataProtection", "src\Cogito.Azure.KeyVault.DataProtection\Cogito.Azure.KeyVault.DataProtection.csproj", "{5AF72ACC-A653-2089-CDB6-81DE1E3C692B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{7C6C49A0-4163-9D76-65CA-78087A255429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C6C49A0-4163-9D76-65CA-78087A255429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C6C49A0-4163-9D76-65CA-78087A255429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AF72ACC-A653-2089-CDB6-81DE1E3C692B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF72ACC-A653-2089-CDB6-81DE1E3C692B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF72ACC-A653-2089-CDB6-81DE1E3C692B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF72ACC-A653-2089-CDB6-81DE1E3C692B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{52D4FE86-2EB0-A77A-A7E9-A6F41ACB229F} = {8598EAA2-A9F0-16E8-9100-3EB9A5B8D556}
 		{7C6C49A0-4163-9D76-65CA-78087A255429} = {8598EAA2-A9F0-16E8-9100-3EB9A5B8D556}
 		{8598EAA2-A9F0-16E8-9100-3EB9A5B8D556} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{5AF72ACC-A653-2089-CDB6-81DE1E3C692B} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF4B3820-4206-4316-82A5-DEA5792C6A71}
