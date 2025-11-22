@@ -14,6 +14,7 @@ namespace Cogito.Azure.KeyVault.Autofac
             builder.RegisterModule<Cogito.Azure.Identity.Autofac.AssemblyModule>();
             builder.RegisterFromAttributes(typeof(AssemblyModule).Assembly);
             builder.Configure<KeyVaultOptions>("Azure:KeyVault");
+            builder.RegisterType<DefaultKeyVaultTokenProvider>().AsImplementedInterfaces().SingleInstance();
             builder.RegisterType<CertificateClientFactory>().AsSelf().SingleInstance();
             builder.RegisterType<KeyClientFactory>().AsSelf().SingleInstance();
             builder.RegisterType<SecretClientFactory>().AsSelf().SingleInstance();
