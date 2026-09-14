@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitattributes" />
+    <File Path=".github/workflows/Cogito.Azure.KeyVault.yml" />
+    <File Path=".gitignore" />
+    <File Path="Cogito.Azure.KeyVault.dist.msbuildproj" />
+    <File Path="Directory.Build.props" />
+    <File Path="GitVersion.yml" />
+    <File Path="global.json" />
+    <File Path="icon.png" />
+    <File Path="LICENSE" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Cogito.Azure.KeyVault.Autofac/Cogito.Azure.KeyVault.Autofac.csproj" />
+    <Project Path="src/Cogito.Azure.KeyVault.DataProtection/Cogito.Azure.KeyVault.DataProtection.csproj" />
+    <Project Path="src/Cogito.Azure.KeyVault/Cogito.Azure.KeyVault.csproj" />
+  </Folder>
+  <Folder Name="/src/dist/">
+    <Project Path="src/dist-nuget/dist-nuget.csproj" />
+    <Project Path="src/dist-tests/dist-tests.csproj" />
+  </Folder>
+</Solution>

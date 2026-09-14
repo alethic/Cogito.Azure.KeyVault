@@ -9,7 +9,7 @@ Publishes 3 packages: `Cogito.Azure.KeyVault`, `Cogito.Azure.KeyVault.Autofac`, 
 ## Build and test
 
 ```shell
-dotnet restore Cogito.Azure.KeyVault.sln
+dotnet restore Cogito.Azure.KeyVault.slnx
 dotnet msbuild -p:Configuration=Release Cogito.Azure.KeyVault.dist.msbuildproj
 ```
 
